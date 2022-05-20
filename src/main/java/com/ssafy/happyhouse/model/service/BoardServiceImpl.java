@@ -16,12 +16,12 @@ public class BoardServiceImpl implements BoardService {
 	private BoardMapper boardMapper;
 
     @Override
-	public List<Board> retrieveBoard() {
+	public List<Board> retrieveBoard(){
 		return boardMapper.selectBoard();
 	}
     
   	@Override
-	public boolean writeBoard(Board board) {
+	public boolean writeBoard(Board board){
 		return boardMapper.insertBoard(board) == 1;
 	}
 
