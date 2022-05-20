@@ -2,21 +2,49 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 	
-<mapper namespace ="com.ssafy.happyhouse.model.repo.UserRepo">
-	<insert id="insert" parameterType="user">
-		insert into userinfo values(#{id}, #{pw},#{address},#{phoneNm},#{name})
-	</insert>
-	
-	<select id="select" parameterType="string" resultType="user">
-		select *from userinfo where id=#{id}
+<mapper namespace ="com.ssafy.happyhouse.model.mapper.UserMapper">
+
+	<select id="idCheck" parameterType="string" resultType="int">
+		select count(id)
+		from userinfo
+		where id = #{checkId}
+	</select>
+
+	<select id="login" parameterType="User" resultType="User">
+		select name, id, email
+		from userinfo
+		where id = #{id} and pwd = #{pwd}
+	</select>
+
+	<select id="getUser" parameterType="String" resultType="User">
+		select id, pwd, name, email, phoneNm
+		from userinfo
+		where id = #{id}
+	</select>
+
+	<select id="getUserList" resultType="User">
+		select id, pwd, name, email, phoneNm
+		from userinfo
+		order by name;
 	</select>
 	
-	<update id="update" parameterType="User" >
-		update userinfo set pw=#{pw}, address=#{address}, phoneNm=#{phoneNm}, name=#{name}
-		where id=#{id}
+	<insert id="registerUser" parameterType="User">
+		insert into userinfo (id, name, pwd, email, phoneNm)
+		values (#{id}, #{name}, #{pwd}, #{email}, #{phoneNm})
+	</insert>	
+		
+	<update id="updateUser" parameterType="User">
+		update user
+		<trim prefix="set" suffixOverrides=",">
+			<if test="name != null">name = #{name},</if>
+			<if test="pwd != null">pwd = #{pwd},</if>
+			<if test="email != null">email = #{email},</if>
+		</trim>
+		where id = #{id}
 	</update>
 	
-	<delete id="delete" parameterType="string">
-		delete from userinfo where id=#{id}
+	<delete id="deleteUser" parameterType="String">
+		delete from userinfo
+		where id = #{id}
 	</delete>
 </mapper>

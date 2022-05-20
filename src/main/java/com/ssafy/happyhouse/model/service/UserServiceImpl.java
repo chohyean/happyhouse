@@ -1,56 +1,58 @@
 package com.ssafy.happyhouse.model.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import com.ssafy.happyhouse.model.dto.User;
-import com.ssafy.happyhouse.model.repo.UserRepo;
+import com.ssafy.happyhouse.model.mapper.UserMapper;
 
 @Service
 public class UserServiceImpl implements UserService {
 
 	@Autowired
-	UserRepo uRepo;
+	private UserMapper userMapper;
 
 	@Override
-	@Transactional
-	public int insert(User user) {
-		return uRepo.insert(user);
-	}
-
-	@Override
-	public boolean existUser(String id) {
-		return uRepo.select(id)!=null;
-	}
-
-	@Override
-	public User login(String id, String pass) {
-		User user =uRepo.select(id);
-		if(user!=null && user.getPw().equals(pass)) {
-			return user;
-		}else {
+	public User login(User userDto) throws Exception {
+		if (userDto.getId() == null || userDto.getPwd() == null)
 			return null;
-		}
+		return userMapper.login(userDto);
 	}
 
 	@Override
-	@Transactional
-	public User select(String id) {
-		return uRepo.select(id);
+	public boolean idCheck(String checkId) throws Exception {
+		int result = userMapper.idCheck(checkId);
+		return result == 0;
 	}
 
 	@Override
-	@Transactional
-	public int update(User user) {
-		return uRepo.update(user);
+	public boolean registerUser(User userDto) throws Exception {
+		int result = userMapper.registerUser(userDto);
+		return result == 1;
 	}
 
 	@Override
-	@Transactional
-	public int delete(String id) {
-		return uRepo.delete(id);
+	public User getUser(String userId) throws Exception {
+		return userMapper.getUser(userId);
 	}
-	
-	
+
+	@Override
+	public List<User> getUserList() throws Exception {
+		return userMapper.getUserList();
+	}
+
+	@Override
+	public boolean updateUser(User userDto) throws Exception {
+		int result = userMapper.updateUser(userDto);
+		return result == 1;
+	}
+
+	@Override
+	public boolean deleteUser(String userId) throws Exception {
+		int result = userMapper.deleteUser(userId);
+		return result == 1;
+	}
+
 }
