@@ -15,11 +15,11 @@ const routes = [
     name: "notice",
     component: () => import("@/views/NoticeView.vue"),
   },
-  {
-    path: "/house",
-    name: "house",
-    component: () => import("@/views/HouseView.vue"),
-  },
+  // {
+  //   path: "/house",
+  //   name: "house",
+  //   component: () => import("@/views/HouseView.vue"),
+  // },
   {
     path: "/user",
     name: "user",
@@ -34,6 +34,11 @@ const routes = [
         path: "signup",
         name: "signUp",
         component: () => import("@/components/user/MemberRegister.vue"),
+      },
+      {
+        path: "info",
+        name: "info",
+        component: () => import("@/components/user/MemberInfo.vue"),
       },
     ],
   },

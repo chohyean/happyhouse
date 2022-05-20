@@ -1,12 +1,10 @@
 <template>
-  <div>
-    <router-view></router-view>
-  </div>
+  <h3>회원정보페이지</h3>
 </template>
 
 <script>
 export default {
-  name: "VuejsMemberView",
+  name: "VuejsMemberInfo",
 
   data() {
     return {};

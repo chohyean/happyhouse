@@ -29,7 +29,16 @@
         </b-navbar-nav>
 
         <!-- Right aligned nav items -->
-        <b-navbar-nav class="ml-auto">
+        <b-navbar-nav class="ml-auto" v-if="userInfo">
+          <b-nav-item href="#" @click.prevent="logout()">로그아웃</b-nav-item>
+          <b-nav-item href="#"
+            ><router-link :to="{ name: 'info' }" class="link"
+              >회원정보</router-link
+            ></b-nav-item
+          >
+        </b-navbar-nav>
+
+        <b-navbar-nav class="ml-auto" v-else>
           <b-nav-item href="#"
             ><router-link :to="{ name: 'signIn' }" class="link"
               >로그인</router-link
@@ -47,16 +56,32 @@
 </template>
 
 <script>
+import { mapState, mapMutations } from "vuex";
+
+const userStore = "userStore";
+
 export default {
   name: "VuejsHeaderNaviBar",
 
   data() {
     return {};
   },
+  computed: {
+    ...mapState(userStore, ["isLogin", "userInfo"]),
+  },
 
   mounted() {},
 
-  methods: {},
+  methods: {
+    ...mapMutations(userStore, ["SET_IS_LOGIN", "SET_USER_INFO"]),
+    logout() {
+      this.SET_IS_LOGIN(false);
+      this.SET_USER_INFO(null);
+      sessionStorage.removeItem("access-token");
+      alert("로그아웃되었습니다.");
+      if (this.$route.path != "/") this.$router.push({ name: "home" });
+    },
+  },
 };
 </script>
 
