@@ -43,7 +43,7 @@ public class BoardServiceImpl implements BoardService {
 	}
 
 	@Override
-	public Board searchById(String id) {
+	public List<Board> searchById(String id) {
 		return boardMapper.searchById(id);
 	}
 

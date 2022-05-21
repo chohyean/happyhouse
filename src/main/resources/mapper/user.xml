@@ -34,12 +34,8 @@
 	</insert>	
 		
 	<update id="updateUser" parameterType="User">
-		update user
-		<trim prefix="set" suffixOverrides=",">
-			<if test="name != null">name = #{name},</if>
-			<if test="pwd != null">pwd = #{pwd},</if>
-			<if test="email != null">email = #{email},</if>
-		</trim>
+		update userinfo
+		set pwd=#{pwd}, name=#{name}, email=#{email}, phoneNm=#{phoneNm}
 		where id = #{id}
 	</update>
 	

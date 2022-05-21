@@ -82,9 +82,20 @@ public class BoardController {
 	}
     
     @ApiOperation(value = "?subject=글제목 에 해당하는 모든 사용자 정보를 반환한다.", response = Board.class)
-    @GetMapping("/search")
-	public ResponseEntity<?> search(@RequestParam String subject) {
+    @GetMapping("/searchsubject")
+	public ResponseEntity<?> searchBySubject(@RequestParam String subject) {
     	List<Board> boards = boardService.searchBySubject(subject);
+		if (boards != null && boards.size() > 0) {
+			return new ResponseEntity<List<Board>>(boards, HttpStatus.OK);
+		} else {
+			return new ResponseEntity<Void>(HttpStatus.NO_CONTENT);
+		}
+	}
+    
+    @ApiOperation(value = "?id=작성자 에 해당하는 모든 사용자 정보를 반환한다.", response = Board.class)
+    @GetMapping("/searchid")
+	public ResponseEntity<?> searchById(@RequestParam String id) {
+    	List<Board> boards = boardService.searchById(id);
 		if (boards != null && boards.size() > 0) {
 			return new ResponseEntity<List<Board>>(boards, HttpStatus.OK);
 		} else {

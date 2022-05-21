@@ -11,6 +11,6 @@ public interface BoardService {
 	public boolean updateBoard(Board board);
 	public boolean deleteBoard(int articleno);
 	
-	Board searchById(String id);
+	List<Board> searchById(String id);
 	List<Board> searchBySubject(String subject);
 }

@@ -46,7 +46,8 @@
 	<select id="searchById" parameterType="string"
 		resultType="Board">
 		SELECT *
-		FROM board WHERE userid = #{userid}
+		FROM board WHERE userid LIKE 
+		CONCAT('%', #{userid}, '%')
 	</select>
 
 	<select id="searchBySubject" parameterType="string"
