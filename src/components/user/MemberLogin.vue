@@ -43,7 +43,7 @@
       </b-col>
       <b-col></b-col>
     </b-row>
-    <b-row class="login-alert">
+    <b-row class="login-alert mt-3">
       <b-col></b-col>
       <b-col
         ><b-alert class="text-center" show variant="danger" v-if="isLoginError"

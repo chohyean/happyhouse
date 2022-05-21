@@ -30,6 +30,14 @@
 
         <!-- Right aligned nav items -->
         <b-navbar-nav class="ml-auto" v-if="userInfo">
+          <b-nav-item class="align-self-center"
+            ><b-avatar
+              class="login-avatar"
+              variant="secondary"
+              size="sm"
+            ></b-avatar
+            >{{ userInfo.name }}님 환영합니다.</b-nav-item
+          >
           <b-nav-item href="#" @click.prevent="logout()">로그아웃</b-nav-item>
           <b-nav-item href="#"
             ><router-link :to="{ name: 'info' }" class="link"
@@ -99,5 +107,10 @@ a:hover {
 a.router-link-exact-active {
   color: #000000;
   font-weight: bold;
+}
+
+.login-avatar {
+  background-color: #959595;
+  margin-right: 5px;
 }
 </style>

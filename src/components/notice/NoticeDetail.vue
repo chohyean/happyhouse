@@ -25,7 +25,7 @@
           >목록</b-button
         >
       </b-col>
-      <b-col class="text-right" v-if="article.userid == userInfo.id">
+      <b-col class="text-right" v-if="userInfo.id == 'admin'">
         <b-button
           squared
           variant="dark"
@@ -45,12 +45,12 @@
 <script>
 // import moment from "moment";
 import { mapState } from "vuex";
-import { getArticle, deleteArticle } from "@/api/board";
+import { getArticle, deleteArticle } from "@/api/notice";
 
 const userStore = "userStore";
 
 export default {
-  name: "BoardDetail",
+  name: "NoticeDetail",
   data() {
     return {
       article: {},
@@ -77,11 +77,11 @@ export default {
   },
   methods: {
     listArticle() {
-      this.$router.push({ name: "boardList" });
+      this.$router.push({ name: "noticeList" });
     },
     moveModifyArticle() {
       this.$router.replace({
-        name: "boardModify",
+        name: "noticeModify",
         params: { articleno: this.article.articleno },
       });
       //   this.$router.push({ path: `/board/modify/${this.article.articleno}` });
@@ -89,7 +89,7 @@ export default {
     deleteArticle() {
       if (confirm("글을 삭제하시겠습니까?")) {
         deleteArticle(this.article.articleno, () => {
-          this.$router.push({ name: "boardList" });
+          this.$router.push({ name: "noticeList" });
         });
       }
     },

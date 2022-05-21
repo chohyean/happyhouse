@@ -2,7 +2,27 @@ import Vue from "vue";
 import VueRouter from "vue-router";
 import HomeView from "../views/HomeView.vue";
 
+import store from "@/store/index.js";
+
 Vue.use(VueRouter);
+
+const onlyAuthUser = async (to, from, next) => {
+  // console.log(store);
+  const checkUserInfo = store.getters["userStore/checkUserInfo"];
+  const getUserInfo = store._actions["userStore/getUserInfo"];
+  let token = sessionStorage.getItem("access-token");
+  if (checkUserInfo == null && token) {
+    await getUserInfo(token);
+  }
+  if (checkUserInfo === null) {
+    alert("로그인이 필요한 페이지입니다.");
+    next({ name: "signIn" });
+    // router.push({ name: "signIn" });
+  } else {
+    // console.log("로그인");
+    next();
+  }
+};
 
 const routes = [
   {
@@ -14,6 +34,32 @@ const routes = [
     path: "/notice",
     name: "notice",
     component: () => import("@/views/NoticeView.vue"),
+    redirect: "/notice/list",
+    children: [
+      {
+        path: "list",
+        name: "noticeList",
+        component: () => import("@/components/notice/NoticeList.vue"),
+      },
+      {
+        path: "write",
+        name: "noticeRegister",
+        beforeEnter: onlyAuthUser,
+        component: () => import("@/components/notice/NoticeRegister.vue"),
+      },
+      {
+        path: "detail/:articleno",
+        name: "noticeDetail",
+        beforeEnter: onlyAuthUser,
+        component: () => import("@/components/notice/NoticeDetail.vue"),
+      },
+      {
+        path: "modify/:articleno",
+        name: "noticeModify",
+        beforeEnter: onlyAuthUser,
+        component: () => import("@/components/notice/NoticeModify.vue"),
+      },
+    ],
   },
   // {
   //   path: "/house",
@@ -40,6 +86,11 @@ const routes = [
         name: "info",
         component: () => import("@/components/user/MemberInfo.vue"),
       },
+      {
+        path: "modify",
+        name: "modify",
+        component: () => import("@/components/user/MemberModify.vue"),
+      },
     ],
   },
   {
@@ -56,16 +107,19 @@ const routes = [
       {
         path: "write",
         name: "boardRegister",
+        beforeEnter: onlyAuthUser,
         component: () => import("@/components/board/BoardRegister.vue"),
       },
       {
         path: "detail/:articleno",
         name: "boardDetail",
+        beforeEnter: onlyAuthUser,
         component: () => import("@/components/board/BoardDetail.vue"),
       },
       {
         path: "modify/:articleno",
         name: "boardModify",
+        beforeEnter: onlyAuthUser,
         component: () => import("@/components/board/BoardModify.vue"),
       },
     ],

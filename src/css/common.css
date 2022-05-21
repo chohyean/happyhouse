@@ -1,0 +1,7 @@
+.customPagination .page-link {
+  color: black;
+}
+.customPagination .page-item.active .page-link {
+  background-color: slategrey;
+  border-color: unset;
+}

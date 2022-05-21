@@ -23,7 +23,7 @@
           <b-table
             hover
             responsive
-            id="board-table"
+            id="notice-table"
             :items="articles"
             :fields="fields"
             :per-page="perPage"
@@ -36,7 +36,7 @@
               <router-link
                 class="link"
                 :to="{
-                  name: 'boardDetail',
+                  name: 'noticeDetail',
                   params: { articleno: data.item.articleno },
                 }"
                 >{{ data.item.subject }}</router-link
@@ -61,12 +61,12 @@
             v-model="currentPage"
             :total-rows="rows"
             :per-page="perPage"
-            aria-controls="board-table"
+            aria-controls="notice-table"
           ></b-pagination>
         </b-col>
         <b-col class="text-right" cols="4">
-          <b-button squared
-            ><router-link :to="{ name: 'boardRegister' }" class="registerLink"
+          <b-button squared v-if="userInfo && userInfo.id == 'admin'"
+            ><router-link :to="{ name: 'noticeRegister' }" class="registerLink"
               ><b-icon icon="pencil"></b-icon> 글쓰기</router-link
             ></b-button
           >
@@ -77,15 +77,16 @@
 </template>
 
 <script>
-import { listArticle, searchById, searchBySubject } from "@/api/board.js";
+import { mapState } from "vuex";
+import { listArticle, searchById, searchBySubject } from "@/api/notice.js";
 // import BoardListItem from "@/components/board/item/BoardListItem";
 import moment from "moment";
 
+const userStore = "userStore";
+
 export default {
-  name: "VuejsBoardList",
-  components: {
-    // BoardListItem,
-  },
+  name: "VuejsNoticeList",
+  components: {},
   data() {
     return {
       articles: [],
@@ -106,6 +107,9 @@ export default {
         { value: "subject", text: "제목" },
       ],
     };
+  },
+  computed: {
+    ...mapState(userStore, ["userInfo"]),
   },
   created() {
     let param = {

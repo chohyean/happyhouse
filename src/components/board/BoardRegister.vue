@@ -13,7 +13,7 @@
 import BoardInputItem from "@/components/board/item/BoardInputItem.vue";
 
 export default {
-  name: "BoardWrite",
+  name: "BoardRegister",
   components: {
     BoardInputItem,
   },
