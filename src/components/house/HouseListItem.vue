@@ -1,5 +1,5 @@
 <template>
-	<b-row>
+	<b-row @click="selectHouse">
 		<b-col>
 			{{ house.dongName }}
 		</b-col>
@@ -34,11 +34,12 @@ export default {
 		...mapState(houseStore, [""]),
 	},
 	methods: {
-		...mapActions(houseStore, ["HouseDealList"]),
+		...mapActions(houseStore, ["detailHouse", "showdetailHouse"]),
 
-		showHouseDealModal() {
-			this.HouseDealList(this.house.aptCode);
-			alert;
+		selectHouse() {
+			console.log("listRow : ", this.house);
+			this.detailHouse(this.house);
+			this.showdetailHouse();
 		},
 	},
 };
