@@ -3,21 +3,18 @@
 		<div>
 			<b-alert show class="user-title"><h3>APARTMENTS</h3></b-alert>
 		</div>
-		<b-container class="house-container">
-			<b-container class="bv-example-row mt-3 h-auto text-center">
-				<h3 class="house-map-title">MAP</h3>
-				<b-row>
-					<b-col>
-						<house-search-bar></house-search-bar>
-					</b-col>
-				</b-row>
-				<b-row>
-					<b-col cols="6" align="left">
-						<house-list />
-					</b-col>
-				</b-row>
-			</b-container>
-		</b-container>
+
+		<h3 class="house-map-title">MAP</h3>
+		<b-row>
+			<b-col cols="1"> </b-col>
+			<b-col cols="5" align="left">
+				<house-search-bar></house-search-bar>
+			</b-col>
+			<b-col cols="5" align="right" style="margin-top: 83px">
+				<house-list />
+			</b-col>
+			<b-col cols="1"> </b-col>
+		</b-row>
 	</div>
 </template>
 

@@ -1,5 +1,5 @@
 <template>
-	<b-container>
+	<div>
 		<b-row class="mt-4 mb-4 text-center">
 			<b-col class="sm-1">
 				<b-form-select v-model="sidoCode" :options="sidos" @change="gugunList"></b-form-select>
@@ -16,7 +16,7 @@
 				<div id="map"></div>
 			</b-col>
 		</b-row>
-	</b-container>
+	</div>
 </template>
 
 <script>
