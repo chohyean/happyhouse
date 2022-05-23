@@ -103,5 +103,17 @@ public class NoticeController {
 			return new ResponseEntity<Void>(HttpStatus.NO_CONTENT);
 		}
 	}
+    
+    @ApiOperation(value = "글번호에 해당하는 게시글의 조회수를 증가시킨다. 그리고 DB수정 성공여부에 따라 'success' 또는 'fail' 문자열을 반환한다.", response = String.class)
+	@PutMapping("/updatehit/{articleno}")
+	public ResponseEntity<String> updateHit(@RequestBody Notice notice) {
+		logger.debug("updateHit - 호출");
+		logger.debug("" + notice);
+		
+		if (noticeService.updateHit(notice)) {
+			return new ResponseEntity<String>(SUCCESS, HttpStatus.OK);
+		}
+		return new ResponseEntity<String>(FAIL, HttpStatus.NO_CONTENT);
+	}
 
 }

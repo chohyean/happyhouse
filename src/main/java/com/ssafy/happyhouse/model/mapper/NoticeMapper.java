@@ -15,4 +15,6 @@ public interface NoticeMapper {
 	
 	List<Notice> searchById(String id);
 	List<Notice> searchBySubject(String subject);
+	
+	public int updateHit(Notice notice);
 }

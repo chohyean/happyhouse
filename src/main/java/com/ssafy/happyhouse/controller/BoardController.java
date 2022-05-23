@@ -81,6 +81,30 @@ public class BoardController {
 		return new ResponseEntity<String>(FAIL, HttpStatus.NO_CONTENT);
 	}
     
+    @ApiOperation(value = "글번호에 해당하는 게시글의 댓글 정보를 수정한다. 그리고 DB수정 성공여부에 따라 'success' 또는 'fail' 문자열을 반환한다.", response = String.class)
+	@PutMapping("/updatereply/{articleno}")
+	public ResponseEntity<String> updateReply(@RequestBody Board board) {
+		logger.debug("updateReply - 호출");
+		logger.debug("" + board);
+		
+		if (boardService.updateReply(board)) {
+			return new ResponseEntity<String>(SUCCESS, HttpStatus.OK);
+		}
+		return new ResponseEntity<String>(FAIL, HttpStatus.NO_CONTENT);
+	}
+    
+    @ApiOperation(value = "글번호에 해당하는 게시글의 댓글 정보를 null로 수정한다. 그리고 DB수정 성공여부에 따라 'success' 또는 'fail' 문자열을 반환한다.", response = String.class)
+	@PutMapping("/deletereply/{articleno}")
+	public ResponseEntity<String> deleteReply(@RequestBody Board board) {
+		logger.debug("deleteReply - 호출");
+		logger.debug("" + board);
+		
+		if (boardService.deleteReply(board)) {
+			return new ResponseEntity<String>(SUCCESS, HttpStatus.OK);
+		}
+		return new ResponseEntity<String>(FAIL, HttpStatus.NO_CONTENT);
+	}
+    
     @ApiOperation(value = "?subject=글제목 에 해당하는 모든 사용자 정보를 반환한다.", response = Board.class)
     @GetMapping("/searchsubject")
 	public ResponseEntity<?> searchBySubject(@RequestParam String subject) {
@@ -101,5 +125,17 @@ public class BoardController {
 		} else {
 			return new ResponseEntity<Void>(HttpStatus.NO_CONTENT);
 		}
+	}
+    
+    @ApiOperation(value = "글번호에 해당하는 게시글의 조회수를 증가시킨다. 그리고 DB수정 성공여부에 따라 'success' 또는 'fail' 문자열을 반환한다.", response = String.class)
+	@PutMapping("/updatehit/{articleno}")
+	public ResponseEntity<String> updateHit(@RequestBody Board board) {
+		logger.debug("updateHit - 호출");
+		logger.debug("" + board);
+		
+		if (boardService.updateHit(board)) {
+			return new ResponseEntity<String>(SUCCESS, HttpStatus.OK);
+		}
+		return new ResponseEntity<String>(FAIL, HttpStatus.NO_CONTENT);
 	}
 }

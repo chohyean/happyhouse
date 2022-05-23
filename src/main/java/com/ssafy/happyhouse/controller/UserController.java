@@ -52,7 +52,7 @@ public class UserController {
 			return new ResponseEntity<String>(FAIL, HttpStatus.NO_CONTENT);
 	}
 
-	@ApiOperation(value = "회원가입", notes = "회원 정보를 입력받아 회원가입을 진핸한다. DB입력에 성공하면 'success' 실패하면 'fail'을 반환한다.", response = String.class)
+	@ApiOperation(value = "회원가입", notes = "회원 정보를 입력받아 회원가입을 진행한다. DB입력에 성공하면 'success' 실패하면 'fail'을 반환한다.", response = String.class)
 	@PostMapping
 	public ResponseEntity<String> registerUser(@RequestBody @ApiParam(value = "회원 정보", required = true) User userDto) throws Exception {
 		logger.debug("memberDto info : {}", userDto);
@@ -117,7 +117,7 @@ public class UserController {
 		return new ResponseEntity<Map<String, Object>>(resultMap, status);
 	}
 	
-	@ApiOperation(value = "회원정보 수정", notes = "회원 정보를 입력받아 회원정보 수정을 진핸한다. DB입력에 성공하면 'success' 실패하면 'fail'을 반환한다.", response = String.class)
+	@ApiOperation(value = "회원정보 수정", notes = "회원 정보를 입력받아 회원정보 수정을 진행한다. DB입력에 성공하면 'success' 실패하면 'fail'을 반환한다.", response = String.class)
 	@PutMapping
 	public ResponseEntity<String> modifyUser(@RequestBody @ApiParam(value = "회원 정보", required = true) User userDto) throws Exception {
 		logger.debug("modifyUser : ", userDto);
@@ -127,7 +127,7 @@ public class UserController {
 			return new ResponseEntity<String>(FAIL, HttpStatus.NO_CONTENT);
 	}
 
-	@ApiOperation(value = "회원탈퇴", notes = "회원 탈퇴를 진핸한다. DB삭제에 성공하면 'success' 실패하면 'fail'을 반환한다.", response = String.class)
+	@ApiOperation(value = "회원탈퇴", notes = "회원 탈퇴를 진행한다. DB삭제에 성공하면 'success' 실패하면 'fail'을 반환한다.", response = String.class)
 	@DeleteMapping
 	public ResponseEntity<String> deleteUser(@RequestBody @ApiParam(value = "삭제할 회원 정보 (userId만 필요)", required = false) User userDto) throws Exception {
 		logger.debug("deleteUser : ", userDto);

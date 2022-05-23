@@ -43,6 +43,7 @@
 		where articleno = #{articleno}
 	</delete>
 	
+	<!-- 아이디별 검색 -->
 	<select id="searchById" parameterType="string"
 		resultType="Notice">
 		SELECT *
@@ -50,12 +51,20 @@
 		CONCAT('%', #{userid}, '%')
 	</select>
 
+	<!-- 제목별 검색 -->
 	<select id="searchBySubject" parameterType="string"
 		resultType="Notice">
 		SELECT *
 		FROM notice WHERE subject LIKE
 		CONCAT('%',#{subject},'%')
 	</select>
+	
+	<!-- 조회수 처리 -->
+	<update id="updateHit" parameterType="notice">
+		update notice 
+		   set hit = #{hit}+1
+		 where articleno = #{articleno}
+	</update>
 
 </mapper>
 

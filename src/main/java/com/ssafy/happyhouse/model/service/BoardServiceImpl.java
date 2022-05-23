@@ -51,4 +51,23 @@ public class BoardServiceImpl implements BoardService {
 	public List<Board> searchBySubject(String subject) {
 		return boardMapper.searchBySubject(subject);
 	}
+
+	@Override
+	@Transactional
+	public boolean updateReply(Board board) {
+		return boardMapper.updateReply(board) == 1;
+	}
+
+	@Override
+	@Transactional
+	public boolean deleteReply(Board board) {
+		return boardMapper.deleteReply(board) == 1;
+	}
+
+	@Override
+	public boolean updateHit(Board board) {
+		return boardMapper.updateHit(board) == 1;
+	}
+
+
 }

@@ -13,6 +13,12 @@ public interface BoardMapper {
 	public int updateBoard(Board board);
 	public int deleteBoard(int articleno);
 	
+	public int updateReply(Board board);
+	public int deleteReply(Board board);
+	
 	List<Board> searchById(String id);
 	List<Board> searchBySubject(String subject);
+	
+	public int updateHit(Board board);
+	
 }

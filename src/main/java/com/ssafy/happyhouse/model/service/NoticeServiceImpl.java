@@ -49,4 +49,9 @@ public class NoticeServiceImpl implements NoticeService{
 		return noticeMapper.searchBySubject(subject);
 	}
 
+	@Override
+	public boolean updateHit(Notice notice) {
+		return noticeMapper.updateHit(notice) == 1;
+	}
+
 }

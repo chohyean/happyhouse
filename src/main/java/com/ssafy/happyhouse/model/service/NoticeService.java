@@ -13,5 +13,7 @@ public interface NoticeService {
 	
 	List<Notice> searchById(String id);
 	List<Notice> searchBySubject(String subject);
+	
+	public boolean updateHit(Notice notice);
 
 }
