@@ -33,6 +33,13 @@ function searchBySubject(param, success, fail) {
   api.get(`/notice/searchsubject`, { params: param }).then(success).catch(fail);
 }
 
+function updateHit(article, success, fail) {
+  api
+    .put(`/notice/updatehit/${article.articleno}`, JSON.stringify(article))
+    .then(success)
+    .catch(fail);
+}
+
 export {
   listArticle,
   writeArticle,
@@ -41,4 +48,5 @@ export {
   deleteArticle,
   searchById,
   searchBySubject,
+  updateHit,
 };

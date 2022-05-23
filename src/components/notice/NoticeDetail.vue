@@ -45,7 +45,7 @@
 <script>
 // import moment from "moment";
 import { mapState } from "vuex";
-import { getArticle, deleteArticle } from "@/api/notice";
+import { getArticle, deleteArticle, updateHit } from "@/api/notice";
 
 const userStore = "userStore";
 
@@ -69,6 +69,22 @@ export default {
       this.$route.params.articleno,
       (response) => {
         this.article = response.data;
+        updateHit(
+          {
+            articleno: this.article.articleno,
+            hit: this.article.hit,
+          },
+          ({ data }) => {
+            if (data === "success") {
+              console.log(this.article.hit);
+            } else {
+              console.log("조회수 처리 중 오류가 발생하였습니다.");
+            }
+          },
+          (error) => {
+            console.log(error);
+          }
+        );
       },
       (error) => {
         console.log("삭제 중 오류가 발생하였습니다.", error);

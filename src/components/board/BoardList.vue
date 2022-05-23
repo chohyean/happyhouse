@@ -51,6 +51,14 @@
             <template #cell(regtime)="data">
               {{ data.item.regtime | dateFormat }}
             </template>
+            <template #cell(replystatus)="data">
+              <h6>
+                <b-badge v-if="data.item.reply" variant="primary"
+                  >답변완료</b-badge
+                >
+                <b-badge v-else variant="light">답변대기</b-badge>
+              </h6>
+            </template>
           </b-table>
         </b-col>
       </b-row>
@@ -95,9 +103,10 @@ export default {
         { key: "userid", label: "작성자" },
         { key: "hit", label: "조회수" },
         { key: "regtime", label: "등록일" },
+        { key: "replystatus", label: "상태" },
       ],
       rows: "",
-      perPage: 5,
+      perPage: 10,
       currentPage: 1,
       search: "",
       selected: "id",

@@ -98,7 +98,7 @@ export default {
         { key: "regtime", label: "등록일" },
       ],
       rows: "",
-      perPage: 5,
+      perPage: 10,
       currentPage: 1,
       search: "",
       selected: "id",

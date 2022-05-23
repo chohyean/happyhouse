@@ -33,6 +33,27 @@ function searchBySubject(param, success, fail) {
   api.get(`/board/searchsubject`, { params: param }).then(success).catch(fail);
 }
 
+function modifyReply(article, success, fail) {
+  api
+    .put(`/board/updatereply/${article.articleno}`, JSON.stringify(article))
+    .then(success)
+    .catch(fail);
+}
+
+function deleteReply(article, success, fail) {
+  api
+    .put(`/board/deletereply/${article.articleno}`, JSON.stringify(article))
+    .then(success)
+    .catch(fail);
+}
+
+function updateHit(article, success, fail) {
+  api
+    .put(`/board/updatehit/${article.articleno}`, JSON.stringify(article))
+    .then(success)
+    .catch(fail);
+}
+
 export {
   listArticle,
   writeArticle,
@@ -41,4 +62,7 @@ export {
   deleteArticle,
   searchById,
   searchBySubject,
+  modifyReply,
+  deleteReply,
+  updateHit,
 };
