@@ -55,6 +55,8 @@
           <b-list-group flush>
             <b-list-group-item>{{ housedetail.buildYear }}</b-list-group-item>
             <b-list-group-item>{{ housedetail.recentPrice }}</b-list-group-item>
+            <b-list-group-item>{{ housedetail.floor }}</b-list-group-item>
+            <b-list-group-item>{{ housedetail.area }}</b-list-group-item>
           </b-list-group>
         </b-card>
       </b-modal>
@@ -103,6 +105,7 @@ export default {
         (response) => {
           console.log(response);
           this.housedetail = items[0];
+          console.log(items[0]);
           this.$bvModal.show("detailModal");
         },
         (error) => {
