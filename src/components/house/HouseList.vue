@@ -1,17 +1,5 @@
 <template>
   <b-container>
-    <b-row class="mb-2" align-h="center">
-      <b-col class="text-right" cols="5">
-        <b-input-group class="mt-4 mb-3">
-          <b-form-input v-model="search"></b-form-input>
-          <template #append>
-            <b-input-group-text @click="searchApt()"
-              ><b-icon icon="search"></b-icon
-            ></b-input-group-text>
-          </template>
-        </b-input-group>
-      </b-col>
-    </b-row>
     <div v-if="houses && houses.length != 0">
       <b-table
         hover
@@ -59,7 +47,6 @@
 
 <script>
 // import HouseListItem from "@/components/house/HouseListItem.vue";
-import { houseDealSearchList } from "@/api/house.js";
 import { mapState, mapActions } from "vuex";
 const houseStore = "houseStore";
 export default {
@@ -91,17 +78,6 @@ export default {
     showHouseDealModal() {
       this.HouseDealList(this.house.aptCode);
       alert;
-    },
-    searchApt() {
-      houseDealSearchList(
-        { aptName: this.search },
-        (response) => {
-          this.houses = response.data;
-        },
-        (error) => {
-          console.log(error);
-        }
-      );
     },
   },
   filters: {

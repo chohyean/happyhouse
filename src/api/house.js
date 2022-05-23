@@ -23,7 +23,10 @@ async function houseDealList(params, success, fail) {
 }
 
 async function houseDealSearchList(params, success, fail) {
-  await api.get(`/map/search`, { params: params }).then(success).catch(fail);
+  await api
+    .get(`/map/searchName`, { params: params })
+    .then(success)
+    .catch(fail);
 }
 
 export {

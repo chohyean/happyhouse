@@ -13,7 +13,7 @@
       <b-col cols="5" align="left">
         <house-search-bar></house-search-bar>
       </b-col>
-      <b-col cols="5" align="right" style="margin-top: 0px">
+      <b-col cols="5" align="right" style="margin-top: 83px">
         <house-list />
       </b-col>
       <b-col cols="1"> </b-col>

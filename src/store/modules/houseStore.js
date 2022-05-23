@@ -4,6 +4,7 @@ import {
   dongList,
   houseList,
   houseDealList,
+  houseDealSearchList,
 } from "@/api/house.js";
 
 const houseStore = {
@@ -128,6 +129,21 @@ const houseStore = {
       houseDealList(
         params,
         ({ data }) => {
+          commit("SET_HOUSEDEAL_LIST", data);
+        },
+        (error) => {
+          console.log(error);
+        }
+      );
+    },
+    HouseDealSearchList: ({ commit }, state, aptName) => {
+      const params = {
+        aptName: aptName,
+      };
+      houseDealSearchList(
+        params,
+        ({ data }) => {
+          state.houses = data;
           commit("SET_HOUSEDEAL_LIST", data);
         },
         (error) => {
