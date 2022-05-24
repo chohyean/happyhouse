@@ -22,4 +22,7 @@ public class HouseInfoDto {
 	private String lng;
 	private String img;
 	private String recentPrice;
+	
+	private String area;
+	private String floor;
 }

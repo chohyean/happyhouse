@@ -57,22 +57,26 @@ public class JsoupComponent {
         String url;
         String contents;
         String time;
+        String img;
 
         title = dt.select("dt").text();
         url = dt.select("a").attr("href");
         contents = dt.select(".lede").text();
         if (contents.length() > 61) contents = contents.substring(0, 61) + "...";
         time = dt.select(".date").text();
+        img = dt.select("img").attr("src");
 
         fields[0].setAccessible(true);
         fields[1].setAccessible(true);
         fields[2].setAccessible(true);
         fields[3].setAccessible(true);
+        fields[4].setAccessible(true);
         try {
             fields[0].set(newsDto, title);
             fields[1].set(newsDto, url);
             fields[2].set(newsDto, contents);
             fields[3].set(newsDto, time);
+            fields[4].set(newsDto, img);
         } catch (Exception ignored) {
         }
 
@@ -119,11 +123,13 @@ public class JsoupComponent {
         String url;
         String contents;
         String time;
+        String img;
 
         title = dt.select("dt").text();
         url = dt.select("a").attr("href");
         contents = dt.select(".lede").text();
         time = dt.select(".date").text();
+        img = dt.select("img").attr("src");
 
         if (!(title.contains(search) || contents.contains(search))) return null;
         
@@ -131,11 +137,13 @@ public class JsoupComponent {
         fields[1].setAccessible(true);
         fields[2].setAccessible(true);
         fields[3].setAccessible(true);
+        fields[4].setAccessible(true);
         try {
             fields[0].set(newsDto, title);
             fields[1].set(newsDto, url);
             fields[2].set(newsDto, contents);
             fields[3].set(newsDto, time);
+            fields[4].set(newsDto, img);
         } catch (Exception ignored) {
         }
 
