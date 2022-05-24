@@ -24,25 +24,85 @@
           </b-row>
           <br />
           <br />
+          <!-- <b-row>
+            <b-col
+              id="newsCard"
+              class="col-lg-4 mb-4"
+              v-for="(item, index) in NewsList"
+              :key="index"
+              :items="NewsList"
+              :per-page="perPage"
+              :current-page="currentPage"
+            >
+              <b-card class="h-100" style="padding: 15px">
+                <b-card-title>
+                  <h4>{{ item.title }}</h4>
+                  <center>
+                  </center>
+                </b-card-title>
+                <br />
+                <b-card-sub-title>
+                  {{ item.contents }}
+                </b-card-sub-title>
+                <br />
+                <b-card-text>
+                  <b-icon icon="clock" font-scale="1" variant="dark"></b-icon>
+                  {{ item.time }}
+                </b-card-text>
+              </b-card>
+            </b-col>
+          </b-row> -->
+          <div class="d-flex justify-content-center"></div>
+          <b-card-group columns>
+            <b-card
+              v-for="(item, index) in paginatedCards"
+              :key="index"
+              :items="NewsList"
+              :per-page="perPage"
+              :current-page="currentPage"
+              :img-src="item.img"
+              img-top
+            >
+              <b-card-title
+                ><a :href="`${item.url}`" target="_blank">{{
+                  item.title
+                }}</a></b-card-title
+              >
+              {{ item.contents }}
+            </b-card>
+          </b-card-group>
+          <b-row class="mt-4" align-h="end">
+            <b-col cols="4"
+              ><b-pagination
+                class="customPagination"
+                v-model="currentPage"
+                :total-rows="NewsList.length"
+                :per-page="perPage"
+                aria-controls="newstable"
+              ></b-pagination
+            ></b-col>
+            <b-col cols="4"
+              ><b-button squared class="md-default" @click="all"
+                >목록</b-button
+              ></b-col
+            >
+          </b-row>
 
           <section>
             <b-table
               id="newstable"
-              head-variant="light"
+              variant="light"
               :items="NewsList"
               :fields="fields"
               :per-page="perPage"
               :current-page="currentPage"
               responsive="sm"
-              style="font-size: 12px; font-family: 'IBMPlexSansKR-Regular'"
+              style="font-size: 13px"
             >
               <template #cell(제목)="data">
-                <a
-                  :href="`${data.item.url}`"
-                  target="_blank"
-                  style="color: darkgreen"
-                  >{{ data.item.title }}</a
-                >
+                <a :href="`${data.item.url}`" target="_blank">{{
+                  data.item.title
+                }}</a>
               </template>
               <template #cell(내용)="data">
                 {{ data.item.contents }}
@@ -82,7 +142,7 @@ export default {
     return {
       fields: ["제목", "내용", "시간"],
       currentPage: 1,
-      perPage: 10,
+      perPage: 9,
       word: "",
     };
   },
@@ -95,6 +155,13 @@ export default {
       return {
         backgroundImage: `url(${this.header})`,
       };
+    },
+    paginatedCards() {
+      const { currentPage, perPage } = this;
+      const start = (currentPage - 1) * perPage;
+      const end = currentPage * perPage;
+
+      return this.NewsList.slice(start, end);
     },
   },
   methods: {
@@ -113,4 +180,12 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+a {
+  color: slategrey;
+  text-decoration: none;
+}
+a:hover {
+  font-weight: bold;
+}
+</style>

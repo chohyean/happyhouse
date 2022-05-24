@@ -46,7 +46,7 @@
       <b-col cols="3"></b-col>
     </b-row>
     <div class="contact-card">
-      <b-modal id="detailModal" title="연락처 상세" hide-footer>
+      <b-modal id="detailModal" hide-footer hide-header>
         <b-card>
           <template #header>
             <h4 class="mb-0">{{ housedetail.aptName }}</h4>
