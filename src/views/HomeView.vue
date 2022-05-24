@@ -20,35 +20,34 @@
 			></b-carousel-slide>
 
 			<!-- Slides with custom text -->
-			<b-carousel-slide caption="Welcome to HappyHouse" :img-src="require('@/assets/apt2.png')">
+			<b-carousel-slide
+				caption="원하는 지역의 아파트를 찾아보세요"
+				:img-src="require('@/assets/apt2.png')"
+			>
 			</b-carousel-slide>
 
 			<!-- Slides with image only -->
 			<b-carousel-slide
-				caption="Bienvenido a HappyHouse"
+				caption="이용하시려면 로그인이 필요합니다."
 				:img-src="require('@/assets/apt3.jpg')"
 			></b-carousel-slide>
 
 			<!-- Slides with image only -->
 			<b-carousel-slide
-				caption="欢迎来到快乐屋"
+				caption="감사합니다"
 				:img-src="require('@/assets/apt4.jpg')"
 			></b-carousel-slide>
 		</b-carousel>
-		<home-news></home-news>
 	</div>
 </template>
 
 <script>
-import HomeNews from "@/components/Home/HomeNews.vue";
 export default {
 	name: "HomeView",
 	props: {
 		msg: String,
 	},
-	components: {
-		HomeNews,
-	},
+	components: {},
 	data() {
 		return {
 			slide: 0,
