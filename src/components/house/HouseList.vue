@@ -1,67 +1,69 @@
 <template>
-  <b-container>
-    <div v-if="houses && houses.length != 0">
-      <b-table
-        hover
-        responsive
-        id="house-table"
-        :items="houses"
-        :fields="fields"
-        :per-page="perPage"
-        :current-page="currentPage"
-        select-mode="single"
-        selectable
-        @row-selected="onRowSelected"
-      >
-        <template #cell(dongName)="data">
-          {{ data.item.dongName }}
-        </template>
-        <template #cell(aptName)="data">
-          {{ data.item.aptName }}
-        </template>
-        <template #cell(buildYear)="data">
-          {{ data.item.buildYear }}
-        </template>
-        <template #cell(recentPrice)="data">
-          {{ parseInt(data.item.recentPrice.replace(",", "")) | price }}만원
-        </template>
-      </b-table>
-    </div>
-    <div v-else>
-      <b-row>
-        <b-col><b-alert show>주택 목록이 없습니다.</b-alert></b-col>
-      </b-row>
-    </div>
-    <b-row>
-      <b-col cols="3"></b-col>
-      <b-col>
-        <b-pagination
-          class="customPagination"
-          v-model="currentPage"
-          :total-rows="houses.length"
-          :per-page="perPage"
-          aria-controls="house-table"
-        ></b-pagination>
-      </b-col>
-      <b-col cols="3"></b-col>
-    </b-row>
-    <div class="contact-card">
-      <b-modal id="detailModal" hide-footer hide-header>
-        <b-card>
-          <template #header>
-            <h4 class="mb-0">{{ housedetail.aptName }}</h4>
-          </template>
+	<b-container>
+		<div v-if="houses && houses.length != 0">
+			<b-table
+				hover
+				responsive
+				id="house-table"
+				:items="houses"
+				:fields="fields"
+				:per-page="perPage"
+				:current-page="currentPage"
+				select-mode="single"
+				selectable
+				@row-selected="onRowSelected"
+			>
+				<template #cell(dongName)="data">
+					{{ data.item.dongName }}
+				</template>
+				<template #cell(aptName)="data">
+					{{ data.item.aptName }}
+				</template>
+				<template #cell(buildYear)="data">
+					{{ data.item.buildYear }}
+				</template>
+				<template #cell(recentPrice)="data">
+					{{ parseInt(data.item.recentPrice.replace(",", "")) | price }}만원
+				</template>
+			</b-table>
+		</div>
+		<div v-else>
+			<b-row>
+				<b-col><b-alert show>주택 목록이 없습니다.</b-alert></b-col>
+			</b-row>
+		</div>
+		<b-row>
+			<b-col cols="3"></b-col>
+			<b-col>
+				<b-pagination
+					class="customPagination"
+					v-model="currentPage"
+					:total-rows="houses.length"
+					:per-page="perPage"
+					aria-controls="house-table"
+				></b-pagination>
+			</b-col>
+			<b-col cols="3"></b-col>
+		</b-row>
+		<div class="contact-card">
+			<b-modal id="detailModal" hide-footer hide-header>
+				<b-card :img-src="require('@/assets/aptse.jpg')">
+					<template #header>
+						<h4 class="mb-0">{{ housedetail.aptName }}</h4>
+					</template>
 
-          <b-list-group flush>
-            <b-list-group-item>{{ housedetail.buildYear }}</b-list-group-item>
-            <b-list-group-item>{{ housedetail.recentPrice }}</b-list-group-item>
-            <b-list-group-item>{{ housedetail.floor }}</b-list-group-item>
-            <b-list-group-item>{{ housedetail.area }}</b-list-group-item>
-          </b-list-group>
-        </b-card>
-      </b-modal>
-    </div>
-  </b-container>
+					<b-list-group flush>
+						<b-list-group-item>건축년도 : {{ housedetail.buildYear }}</b-list-group-item>
+						<b-list-group-item>최근 거래 금액 :{{ housedetail.recentPrice }}</b-list-group-item>
+						<b-list-group-item>층 수 :{{ housedetail.floor }}</b-list-group-item>
+						<b-list-group-item
+							>면적 :{{ Math.round((housedetail.area / 3.3058) * 100) / 100 }}평</b-list-group-item
+						>
+					</b-list-group>
+				</b-card>
+			</b-modal>
+		</div>
+	</b-container>
 </template>
 
 <script>
@@ -71,55 +73,55 @@ import { mapState, mapActions } from "vuex";
 
 const houseStore = "houseStore";
 export default {
-  name: "HouseList",
-  components: {
-    // HouseListItem,
-  },
-  data() {
-    return {
-      house: Object,
-      fields: [
-        { key: "dongName", label: "법정동" },
-        { key: "aptName", label: "아파트이름" },
-        { key: "buildYear", label: "건축년도", sortable: true },
-        { key: "recentPrice", label: "최근거래금액", sortable: true },
-      ],
-      rows: "",
-      perPage: 8,
-      currentPage: 1,
-      search: "",
-      housedetail: {},
-    };
-  },
-  computed: {
-    ...mapState(houseStore, ["houses"]),
-  },
-  methods: {
-    ...mapActions(houseStore, ["HouseDealList"]),
-    async onRowSelected(items) {
-      //console.log(items);
-      let param = { dong: items[0].dongCode };
-      houseDetailshow(
-        param,
+	name: "HouseList",
+	components: {
+		// HouseListItem,
+	},
+	data() {
+		return {
+			house: Object,
+			fields: [
+				{ key: "dongName", label: "법정동" },
+				{ key: "aptName", label: "아파트이름" },
+				{ key: "buildYear", label: "건축년도", sortable: true },
+				{ key: "recentPrice", label: "최근거래금액", sortable: true },
+			],
+			rows: "",
+			perPage: 8,
+			currentPage: 1,
+			search: "",
+			housedetail: {},
+		};
+	},
+	computed: {
+		...mapState(houseStore, ["houses"]),
+	},
+	methods: {
+		...mapActions(houseStore, ["HouseDealList"]),
+		async onRowSelected(items) {
+			//console.log(items);
+			let param = { dong: items[0].dongCode };
+			houseDetailshow(
+				param,
 
-        (response) => {
-          console.log(response);
-          this.housedetail = items[0];
-          console.log(items[0]);
-          this.$bvModal.show("detailModal");
-        },
-        (error) => {
-          console.log(error);
-        }
-      );
-    },
-  },
-  filters: {
-    price(value) {
-      if (!value) return value;
-      return value.toString().replace(/\B(?=(\d{4})+(?!\d))/g, "억");
-    },
-  },
+				(response) => {
+					console.log(response);
+					this.housedetail = items[0];
+					console.log(items[0]);
+					this.$bvModal.show("detailModal");
+				},
+				(error) => {
+					console.log(error);
+				}
+			);
+		},
+	},
+	filters: {
+		price(value) {
+			if (!value) return value;
+			return value.toString().replace(/\B(?=(\d{4})+(?!\d))/g, "억");
+		},
+	},
 };
 </script>
 
