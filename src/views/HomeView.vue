@@ -20,7 +20,7 @@
 			></b-carousel-slide>
 
 			<!-- Slides with custom text -->
-			<b-carousel-slide caption="Welcome to HappyHouse" :img-src="require('@/assets/apt2.jpg')">
+			<b-carousel-slide caption="Welcome to HappyHouse" :img-src="require('@/assets/apt2.png')">
 			</b-carousel-slide>
 
 			<!-- Slides with image only -->
