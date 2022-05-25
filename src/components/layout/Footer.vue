@@ -1,15 +1,18 @@
 <template>
 	<div class="footer">
 		<div class="f_text">
-			<h3>Find Us</h3>
-			<div class="line"></div>
+			<h4>Contact Us</h4>
+			<hr />
 			<div>
-				<ul class="nav flex-column">
-					<li>
-						<i class="fa-solid fa-location-dot"></i> (SSAFY) 서울시 강남구 테헤란로 멀티스퀘어
-					</li>
-					<li class="footer_info_item"><i class="fa-solid fa-phone"></i> 1544-9001</li>
-					<li class="footer_info_item"><i class="fa-solid fa-envelope"></i> admin@ssafy.com</li>
+				<ul class="nav row" style="float: none; margin: 100 auto">
+					<div class="col-6">
+						<li><i class="fa-solid fa-location-dot"></i> (SSAFY) 7기 happyhouse</li>
+
+						<li class="footer_info_item"><i class="fa-solid fa-envelope"></i> 02-3429-5100</li>
+						<li class="footer_info_item">
+							<i class="fa-solid fa-envelope"></i> Copyright © SAMSUNG All Rights Reserved.
+						</li>
+					</div>
 				</ul>
 			</div>
 		</div>
@@ -31,11 +34,17 @@ export default {
 </script>
 
 <style scoped>
+hr {
+	background-color: white;
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
 .footer {
-	background-color: #24282b;
+	background-color: rgb(113, 162, 210);
 }
 
 .f_text {
+	padding-left: 20px;
 	color: white;
 }
 </style>
