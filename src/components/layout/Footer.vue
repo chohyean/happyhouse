@@ -1,10 +1,6 @@
 <template>
-	<div class="p-4">
-		<hr />
-		<div class="col-2 float-left">
-			<img src="@/assets/happyhouse.png" alt="" class="col-9" />
-		</div>
-		<div>
+	<div class="footer">
+		<div class="f_text">
 			<h3>Find Us</h3>
 			<div class="line"></div>
 			<div>
@@ -34,4 +30,12 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+.footer {
+	background-color: #24282b;
+}
+
+.f_text {
+	color: white;
+}
+</style>
