@@ -94,7 +94,7 @@
           <b-nav-item class="align-self-center"
             ><b-avatar
               class="login-avatar"
-              variant="primary"
+              style="background-color: skyblue"
               size="sm"
             ></b-avatar
             >{{ userInfo.name }}님 환영합니다.</b-nav-item

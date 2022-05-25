@@ -3,24 +3,22 @@
     <div class="main main-raised">
       <div class="section" id="services">
         <div class="container">
-          <b-row class="mt-4 mb-4 text-center">
-            <b-col>
+          <b-row class="mt-4 mb-2 text-center">
+            <b-col cols="2">
               <b-form-select
                 v-model="selected"
                 :options="options"
               ></b-form-select>
             </b-col>
-            <b-col class="sm-3">
-              <b-input v-model="word" @keyup.enter="searchN"></b-input>
-            </b-col>
-            <b-col class="sm-3">
-              <b-button
-                squared
-                style="float: left"
-                class="md-info"
-                @click="searchN"
-                >검색</b-button
-              >
+            <b-col class="text-right" cols="5" align-h="end">
+              <b-input-group>
+                <b-input v-model="word" @keyup.enter="searchN"></b-input>
+                <template #append>
+                  <b-input-group-text @click="searchN()" @keyup.enter="searchN"
+                    ><b-icon icon="search"></b-icon
+                  ></b-input-group-text>
+                </template>
+              </b-input-group>
             </b-col>
           </b-row>
           <br />
@@ -73,6 +71,7 @@
           </b-card-group>
 
           <b-table
+            hover
             v-if="this.selected == 'table'"
             id="newstable"
             variant="light"
@@ -81,19 +80,25 @@
             :per-page="perPage"
             :current-page="currentPage"
             responsive="sm"
-            style="font-size: 13px"
           >
             <template #cell(제목)="data">
-              <a :href="`${data.item.url}`" target="_blank">{{
-                data.item.title
-              }}</a>
+              <a
+                :href="`${data.item.url}`"
+                target="_blank"
+                style="font-size: 1em"
+                >{{ data.item.title }}</a
+              >
             </template>
             <template #cell(내용)="data">
-              {{ data.item.contents }}
+              <div style="width: 400px; font-size: 0.9em">
+                {{ data.item.contents }}
+              </div>
             </template>
             <template #cell(시간)="data">
-              <b-icon icon="clock" font-scale="1" variant="dark"></b-icon>
-              {{ data.item.time }}
+              <div style="font-size: 14px">
+                <b-icon icon="clock" font-scale="1" variant="dark"></b-icon>
+                {{ data.item.time }}
+              </div>
             </template>
           </b-table>
           <b-row class="mt-4" align-h="end">
@@ -107,7 +112,11 @@
               ></b-pagination>
             </b-col>
             <b-col cols="4"
-              ><b-button squared class="md-default" @click="all"
+              ><b-button
+                squared
+                class="md-default"
+                @click="all"
+                style="background-color: rgb(75, 129, 183)"
                 >목록</b-button
               ></b-col
             >
@@ -170,8 +179,10 @@ export default {
 
 <style scoped>
 a {
-  color: slategrey;
+  color: rgb(75, 129, 183);
   text-decoration: none;
+  font-size: 0.9em;
+  font-family: "Noto Sans KR", sans-serif;
 }
 a:hover {
   font-weight: bold;
@@ -184,7 +195,7 @@ a:hover {
   padding: 60px 0 40px 0;
   position: relative;
   margin: auto;
-  max-width: 1300px;
+  max-width: 1000px;
   width: calc(100% - 100px);
   height: 100%;
   min-height: 100%;
@@ -203,7 +214,7 @@ a:hover {
 }
 
 #services .box:hover .title a {
-  color: black;
+  color: rgb(75, 129, 183);
   font-weight: bold;
 }
 </style>

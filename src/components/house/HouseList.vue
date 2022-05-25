@@ -49,6 +49,7 @@
       </b-col>
       <b-col cols="3"></b-col>
     </b-row>
+
     <div class="housedetail-card text-center">
       <b-modal
         class="modal-lg"
@@ -208,4 +209,8 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+._str {
+  min-height: 660px;
+}
+</style>

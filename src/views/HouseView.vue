@@ -8,7 +8,7 @@
           :img-src="require('@/assets/headerImg.jpg')"
           text-variant="dark"
         >
-          <div class="card-header-title">Housedeal Info</div>
+          <div class="card-header-title">House deal</div>
         </b-card>
       </div>
     </div>
@@ -23,12 +23,17 @@
       </b-col>
       <b-col cols="1"> </b-col>
     </b-row>
+
+    <div class="bv-example-row text-center">
+      <house-chart></house-chart>
+    </div>
   </div>
 </template>
 
 <script>
 import HouseList from "@/components/house/HouseList.vue";
 import HouseSearchBar from "@/components/house/HouseSearchBar.vue";
+import HouseChart from "@/components/house/HouseChart.vue";
 export default {
   name: "HouseView",
 
@@ -38,6 +43,7 @@ export default {
   components: {
     HouseList,
     HouseSearchBar,
+    HouseChart,
   },
   mounted() {},
 

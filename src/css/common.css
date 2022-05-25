@@ -2,12 +2,13 @@
   color: black;
 }
 .customPagination .page-item.active .page-link {
-  background-color: slategrey;
+  background-color: rgb(75, 129, 183);
   border-color: unset;
 }
 
 @import url("https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Gothic+A1:wght@700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap");
 
 .card-header-title {
   /* color: white;
