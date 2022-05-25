@@ -73,7 +73,7 @@
           ></b-pagination>
         </b-col>
         <b-col class="text-right" cols="4">
-          <b-button squared
+          <b-button squared style="background-color: rgb(75, 129, 183)"
             ><router-link :to="{ name: 'boardRegister' }" class="registerLink"
               ><b-icon icon="pencil"></b-icon> 글쓰기</router-link
             ></b-button
