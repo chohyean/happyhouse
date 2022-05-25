@@ -122,11 +122,13 @@ const routes = [
   {
     path: "/house",
     name: "house",
+    beforeEnter: onlyAuthUser,
     component: () => import("@/views/HouseView.vue"),
   },
   {
     path: "/news",
     name: "news",
+    beforeEnter: onlyAuthUser,
     component: () => import("@/views/NewsView.vue"),
     // props: {
     //   header: { colorOnScroll: 150 },

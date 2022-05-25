@@ -1,12 +1,18 @@
 <template>
-  <b-container class="bv-example-row mt-5 text-center">
-    <b-alert show variant="dark">
-      <h3>오늘의 뉴스</h3>
-      <hr />
-      <p class="mb-0">부동산 관련 최신 소식들을 알려드립니다.</p>
-    </b-alert>
+  <div class="bv-example-row text-center">
+    <div class="img">
+      <b-card
+        class="card text-center"
+        overlay
+        :img-src="require('@/assets/headerImg.jpg')"
+        text-variant="dark"
+      >
+        <div class="card-header-title">오늘의 뉴스</div>
+      </b-card>
+    </div>
+
     <news-list></news-list>
-  </b-container>
+  </div>
 </template>
 
 <script>

@@ -47,7 +47,7 @@
               <b-card-img
                 v-else
                 thumbnail
-                :src="require('@/assets/happyhouse.png')"
+                :src="require('@/assets/noimage.jpeg')"
                 height="190px"
                 img-top
               >

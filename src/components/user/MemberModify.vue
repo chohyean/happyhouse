@@ -1,11 +1,18 @@
 <template>
-  <b-container class="bv-example-row mt-5 text-center">
-    <b-alert show variant="dark">
-      <h3>회원정보 수정</h3>
-    </b-alert>
-    <b-row class="mt-2">
+  <div class="bv-example-row text-center">
+    <div class="img">
+      <b-card
+        class="card text-center"
+        overlay
+        :img-src="require('@/assets/headerImg.jpg')"
+        text-variant="dark"
+      >
+        <div class="card-header-title">user info</div>
+      </b-card>
+    </div>
+    <b-row class="mt-5">
       <b-col></b-col>
-      <b-col cols="6">
+      <b-col cols="4">
         <b-card no-body style="max-width: 40rem">
           <template #header>
             <b-avatar b-avatar size="72px"></b-avatar>
@@ -71,7 +78,7 @@
       </b-col>
       <b-col></b-col>
     </b-row>
-  </b-container>
+  </div>
 </template>
 
 <script>

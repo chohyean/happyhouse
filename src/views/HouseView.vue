@@ -1,12 +1,17 @@
 <template>
   <div>
-    <b-container class="bv-example-row mt-5 text-center">
-      <b-alert show variant="dark">
-        <h3>매물정보</h3>
-        <hr />
-        <p class="mb-0">최근 거래내역 정보를 찾아보세요.</p>
-      </b-alert>
-    </b-container>
+    <div class="bv-example-row text-center">
+      <div class="img">
+        <b-card
+          class="card text-center"
+          overlay
+          :img-src="require('@/assets/headerImg.jpg')"
+          text-variant="dark"
+        >
+          <div class="card-header-title">Housedeal Info</div>
+        </b-card>
+      </div>
+    </div>
 
     <b-row>
       <b-col cols="1"> </b-col>
@@ -40,9 +45,4 @@ export default {
 };
 </script>
 
-<style scoped>
-.house-map-title {
-  padding-top: 10px;
-  color: #8cbded;
-}
-</style>
+<style scoped></style>

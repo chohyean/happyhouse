@@ -1,25 +1,30 @@
 <template>
-	<b-container class="bv-example-row mt-5 text-center">
-		<b-alert show variant="dark">
-			<h3>Q&A 게시판</h3>
-			<hr />
-			<p class="mb-0">궁금하신 점이나 의견을 남겨주세요.</p>
-		</b-alert>
-		<router-view></router-view>
-	</b-container>
+  <div class="bv-example-row text-center">
+    <div class="img">
+      <b-card
+        class="card text-center"
+        overlay
+        :img-src="require('@/assets/headerImg.jpg')"
+        text-variant="dark"
+      >
+        <div class="card-header-title">Q & A</div>
+      </b-card>
+    </div>
+    <router-view></router-view>
+  </div>
 </template>
 
 <script>
 export default {
-	name: "VuejsBoardView",
+  name: "VuejsBoardView",
 
-	data() {
-		return {};
-	},
+  data() {
+    return {};
+  },
 
-	mounted() {},
+  mounted() {},
 
-	methods: {},
+  methods: {},
 };
 </script>
 

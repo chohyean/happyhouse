@@ -10,9 +10,9 @@ import {
 const houseStore = {
   namespaced: true,
   state: {
-    sidos: [{ value: null, text: "선택하세요" }],
-    guguns: [{ value: null, text: "선택하세요" }],
-    dongs: [{ value: null, text: "선택하세요." }],
+    sidos: [{ value: null, text: "시" }],
+    guguns: [{ value: null, text: "군" }],
+    dongs: [{ value: null, text: "동" }],
     houses: [],
     house: null,
     houseDeals: null,
@@ -56,13 +56,13 @@ const houseStore = {
       state.houseDeals = houseDeals;
     },
     CLEAR_SIDO_LIST(state) {
-      state.sidos = [{ value: null, text: "선택하세요" }];
+      state.sidos = [{ value: null, text: "시" }];
     },
     CLEAR_GUGUN_LIST(state) {
-      state.guguns = [{ value: null, text: "선택하세요" }];
+      state.guguns = [{ value: null, text: "군" }];
     },
     CLEAR_DONG_LIST(state) {
-      state.dongs = [{ value: null, text: "선택하세요" }];
+      state.dongs = [{ value: null, text: "동" }];
     },
   },
 

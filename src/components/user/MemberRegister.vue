@@ -1,13 +1,20 @@
 <template>
-  <b-container class="bv-example-row mt-5 text-center">
-    <b-alert show variant="dark">
-      <h3>회원가입</h3>
-    </b-alert>
+  <div class="bv-example-row text-center">
+    <div class="img">
+      <b-card
+        class="card text-center"
+        overlay
+        :img-src="require('@/assets/headerImg.jpg')"
+        text-variant="dark"
+      >
+        <div class="card-header-title">sign up</div>
+      </b-card>
+    </div>
     <b-row>
       <b-col></b-col>
-      <b-col cols="6">
+      <b-col cols="5">
         <b-card
-          class="login-form-border text-center mt-3"
+          class="login-form-border text-center mt-5"
           style="max-width: 40rem"
         >
           <b-form @submit="onSubmit" class="login-form-form">
@@ -128,7 +135,7 @@
       <b-col></b-col>
       <b-col></b-col>
     </b-row>
-  </b-container>
+  </div>
 </template>
 
 <script>

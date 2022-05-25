@@ -3,7 +3,7 @@
     <b-container class="bv-example-row mt-3">
       <b-row class="mb-2" align-h="end">
         <b-col class="text-right" cols="5">
-          <b-input-group class="mt-3">
+          <b-input-group class="mt-3 mb-2">
             <b-form-select
               v-model="selected"
               :options="options"
@@ -54,8 +54,8 @@
           </b-table>
         </b-col>
       </b-row>
-      <b-row class="mb-1" align-h="end">
-        <b-col cols="4">
+      <b-row class="mt-2 mb-1" align-h="end">
+        <b-col cols="3">
           <b-pagination
             class="customPagination"
             v-model="currentPage"
@@ -179,7 +179,7 @@ export default {
   text-align: left;
 }
 .link {
-  color: slategrey;
+  color: rgb(75, 129, 183);
   text-decoration: none;
 }
 .registerLink {

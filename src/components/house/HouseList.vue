@@ -29,11 +29,15 @@
     </div>
     <div v-else>
       <b-row>
-        <b-col><b-alert show>주택 목록이 없습니다.</b-alert></b-col>
+        <b-col
+          ><b-alert show class="text-center"
+            >주택 목록이 없습니다.</b-alert
+          ></b-col
+        >
       </b-row>
     </div>
     <b-row>
-      <b-col cols="3"></b-col>
+      <b-col cols="4"></b-col>
       <b-col>
         <b-pagination
           class="customPagination"
@@ -48,59 +52,74 @@
     <div class="housedetail-card text-center">
       <b-modal
         class="modal-lg"
-        size="lg"
+        size="xl"
         id="detailModal"
         hide-footer
         hide-header
       >
-        <b-card img-left class="text-center">
-          <b-col></b-col>
-          <b-col></b-col>
-
-          <b-card-img :src="require('@/assets/aptse.jpg')"></b-card-img>
-
-          <b-list-group flush>
-            <b-list-group-item>
-              <b-card-title>{{ housedetail.aptName }}</b-card-title>
-            </b-list-group-item>
-
-            <b-list-group-item
-              ><b-card-sub-title class="mb-2 mt-1">건축년도</b-card-sub-title>
-              <b-card-text>
-                {{ housedetail.buildYear }}
-              </b-card-text></b-list-group-item
-            >
-            <b-list-group-item
-              ><b-card-sub-title class="mb-2 mt-1"
-                >최근 거래금액</b-card-sub-title
-              >
-              <b-card-text>
-                {{ housedetail.recentPrice }}
-              </b-card-text></b-list-group-item
-            >
-            <b-list-group-item
-              ><b-card-sub-title class="mb-2 mt-1">층 수</b-card-sub-title>
-              <b-card-text>
-                {{ housedetail.floor }}층
-              </b-card-text></b-list-group-item
-            >
-            <b-list-group-item
-              ><b-card-sub-title class="mb-2 mt-1">면적</b-card-sub-title>
-              <b-card-text>
-                {{ Math.round((housedetail.area / 3.3058) * 100) / 100 }}평
-              </b-card-text></b-list-group-item
-            >
-
-            <b-list-group-item>
-              근처 코로나 19 안심병원
-              <b-table
-                striped
-                hover
-                :items="hospitals"
-                :fields="hospitalFields"
-              ></b-table>
-            </b-list-group-item>
-          </b-list-group>
+        <b-card class="text-center" header-tag="header" footer-tag="footer">
+          <template #header>
+            <b-card-title>{{ housedetail.aptName }}</b-card-title>
+          </template>
+          <b-col>
+            <b-row rows="9">
+              <b-col cols="6">
+                <b-card-img :src="require('@/assets/aptse.jpg')"></b-card-img>
+              </b-col>
+              <b-col cols="6">
+                <b-list-group flush>
+                  <b-list-group-item
+                    ><b-card-sub-title class="mb-2 mt-1">주소</b-card-sub-title>
+                    <b-card-text>
+                      {{ housedetail.sidoName }} {{ housedetail.gugunName }}
+                      {{ housedetail.dongName }} {{ housedetail.jibun }}
+                    </b-card-text></b-list-group-item
+                  >
+                  <b-list-group-item
+                    ><b-card-sub-title class="mb-2 mt-1"
+                      >건축년도</b-card-sub-title
+                    >
+                    <b-card-text>
+                      {{ housedetail.buildYear }}
+                    </b-card-text></b-list-group-item
+                  >
+                  <b-list-group-item
+                    ><b-card-sub-title class="mb-2 mt-1"
+                      >최근 거래금액</b-card-sub-title
+                    >
+                    <b-card-text>
+                      {{ housedetail.recentPrice }}
+                    </b-card-text></b-list-group-item
+                  >
+                  <b-list-group-item
+                    ><b-card-sub-title class="mb-2 mt-1">층</b-card-sub-title>
+                    <b-card-text>
+                      {{ housedetail.floor }}층
+                    </b-card-text></b-list-group-item
+                  >
+                  <b-list-group-item
+                    ><b-card-sub-title class="mb-2 mt-1">면적</b-card-sub-title>
+                    <b-card-text>
+                      {{
+                        Math.round((housedetail.area / 3.3058) * 100) / 100
+                      }}평
+                    </b-card-text></b-list-group-item
+                  >
+                </b-list-group>
+              </b-col>
+            </b-row>
+          </b-col>
+          <!-- <b-row rows="3"> -->
+          <template #footer>
+            <h6 class="mb-2">근처 코로나19 안심병원</h6>
+            <b-table hover :items="hospitals" :fields="hospitalFields">
+              <template #cell(type)="data">
+                <div v-if="data.item.type == 'A'">외래진료</div>
+                <div v-if="data.item.type == 'B'">외래진료 및 입원</div>
+              </template>
+            </b-table>
+          </template>
+          <!-- </b-row> -->
         </b-card>
       </b-modal>
     </div>
@@ -137,6 +156,7 @@ export default {
       hospitalFields: [
         { key: "name", label: "기관명" },
         { key: "address", label: "주소" },
+        { key: "type", label: "유형" },
         { key: "tel", label: "전화번호" },
       ],
     };

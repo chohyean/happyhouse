@@ -1,25 +1,31 @@
 <template>
-	<b-container class="bv-example-row mt-5 text-center">
-		<b-alert show variant="dark">
-			<h3>공지사항</h3>
-			<hr />
-			<p class="mb-0">HappyHouse 관련 주요 공지를 알려드립니다.</p>
-		</b-alert>
-		<router-view></router-view>
-	</b-container>
+  <div class="bv-example-row text-center">
+    <div class="img">
+      <b-card
+        class="card text-center"
+        overlay
+        :img-src="require('@/assets/headerImg.jpg')"
+        text-variant="dark"
+      >
+        <div class="card-header-title">Notice</div>
+      </b-card>
+    </div>
+
+    <router-view></router-view>
+  </div>
 </template>
 
 <script>
 export default {
-	name: "VuejsNoticeView",
+  name: "VuejsNoticeView",
 
-	data() {
-		return {};
-	},
+  data() {
+    return {};
+  },
 
-	mounted() {},
+  mounted() {},
 
-	methods: {},
+  methods: {},
 };
 </script>
 
