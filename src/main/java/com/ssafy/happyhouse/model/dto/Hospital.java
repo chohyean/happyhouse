@@ -18,6 +18,8 @@ public class Hospital {
 	private String name;
 	// 도로명주소
 	private String address;
+	// 유형 
+	private String type;
 	// 전화번호
 	private String tel;
 }

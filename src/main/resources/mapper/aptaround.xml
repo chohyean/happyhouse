@@ -5,7 +5,7 @@
 <mapper namespace="com.ssafy.happyhouse.model.mapper.AptAroundMapper">
 
 	<select id="getHospitalByGugun" resultType="hospital">
-		select name, address, tel from hospital where sido = left(#{sido},2) and gugun = #{gugun}
+		select name, address, tel, type from hospital where sido = left(#{sido},2) and gugun = #{gugun}
 	</select>
 	
 	

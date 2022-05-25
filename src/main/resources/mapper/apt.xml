@@ -58,6 +58,27 @@
 		where h.aptName like concat('%', #{aptName}, '%') 
 	</select>
 	
+	<select id = "listAptAvgDesc" parameterType="string" resultType="HouseAvgDto">
+		select i.dongname, round(avg(replace(d.dealamount, ',', ''))) dealAmountAvg
+		from houseinfo i, housedeal d, sidocode si, guguncode gu
+		where i.aptcode = d.aptcode and gu.guguncode = #{gugun} 
+		and left(i.dongcode,2) = left(si.sidocode,2) 
+		and left(i.dongcode,5) = left(gu.guguncode,5)
+		group by i.dongname
+		order by dealAmountAvg desc
+		limit 10;
+	</select>
+	
+	<select id = "listAptAvgAsc" parameterType="string" resultType="HouseAvgDto">
+		select i.dongname, round(avg(replace(d.dealamount, ',', ''))) dealAmountAvg
+		from houseinfo i, housedeal d, sidocode si, guguncode gu
+		where i.aptcode = d.aptcode and gu.guguncode = #{gugun} 
+		and left(i.dongcode,2) = left(si.sidocode,2) 
+		and left(i.dongcode,5) = left(gu.guguncode,5)
+		group by i.dongname
+		order by dealAmountAvg
+		limit 10;
+	</select>
 	
 	
 </mapper>

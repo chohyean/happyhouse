@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.ssafy.happyhouse.model.dto.HouseAvgDto;
 import com.ssafy.happyhouse.model.dto.HouseInfoDto;
 import com.ssafy.happyhouse.model.dto.SidoGugunCodeDto;
 import com.ssafy.happyhouse.model.mapper.HouseMapMapper;
@@ -39,6 +40,16 @@ public class HouseMapServiceImpl implements HouseMapService {
 	@Override
 	public List<HouseInfoDto> getAptInName(String aptName) throws SQLException {
 		return houseMapMapper.getAptInName(aptName);
+	}
+
+	@Override
+	public List<HouseAvgDto> listAptAvgDesc(String gugun) throws SQLException {
+		return houseMapMapper.listAptAvgDesc(gugun);
+	}
+
+	@Override
+	public List<HouseAvgDto> listAptAvgAsc(String gugun) throws SQLException {
+		return houseMapMapper.listAptAvgAsc(gugun);
 	}
 
 }

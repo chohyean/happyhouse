@@ -32,7 +32,7 @@
 		update board 
 		   set subject = #{subject}, 
 		   	   userid = #{userid}, 
-		   	   content = #{content},
+		   	   content = #{content}
 		 where articleno = #{articleno}
 	</update>
 
