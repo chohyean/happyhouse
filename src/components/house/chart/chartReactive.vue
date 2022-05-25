@@ -1,5 +1,6 @@
 <script>
 import { Bar } from "vue-chartjs/legacy";
+
 import {
   Chart as ChartJS,
   Title,
@@ -24,6 +25,7 @@ export default {
   extends: Bar,
   // mixins: [reactiveProp],
   components: { Bar },
+
   props: {
     chartId: {
       type: String,
@@ -53,6 +55,10 @@ export default {
       type: Object,
       default: () => {},
     },
+  },
+  mounted() {
+    // this.chartData is created in the mixin and contains all the data needed to build the chart.
+    // this.renderChart(this.chartData, this.options);
   },
   data() {
     return {};

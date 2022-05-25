@@ -24,6 +24,7 @@
               <div class="chart-subject mb-2">
                 최근거래가격 평균 상위동네 Top10
               </div>
+
               <chart-reactive :chart-data="aptDescChart"></chart-reactive>
             </div>
           </b-col>
@@ -70,8 +71,6 @@ export default {
       aptDealDescdata: [],
       aptDealAsclabel: [],
       aptDealAscdata: [],
-      aptDealAscChartId: "",
-      aptDealDescChartId: "",
     };
   },
   computed: {
@@ -96,15 +95,6 @@ export default {
       if (this.sidoCode) this.Gugun(this.sidoCode);
     },
     async sendKeyword() {
-      // if (this.sidoCode == '') {
-      //   alert('선택해주세요');
-      //   return;
-      // }
-      // if (this.gunguCode == '') {
-      //   alert('선택해주세요');
-      //   return;
-      // }
-
       this.aptDealDescData = await api
         .get("/map/findAvgDesc/" + this.gugunCode + "00000")
         .then((response) => {
@@ -148,14 +138,11 @@ export default {
         this.aptDealAscdata.push(this.aptDealAscData[i].dealAmountAvg);
       }
 
-      this.aptDealDescChartId = "이거냐이거??";
-      this.aptDealAscChartId = "이거냐이거??";
-
       this.aptDescChart = {
         labels: this.aptDealDesclabel,
         datasets: [
           {
-            label: "동별 아파트 평균 가격(만원)",
+            label: "동별 평균 거래가격(만원)",
             backgroundColor: "skyblue",
             // Data for the x-axis of the chart
             data: this.aptDealDescdata,
@@ -166,7 +153,7 @@ export default {
         labels: this.aptDealAsclabel,
         datasets: [
           {
-            label: "동별 아파트 평균 가격(만원)",
+            label: "동별 평균 거래가격(만원)",
             backgroundColor: "skyblue",
             // Data for the x-axis of the chart
             data: this.aptDealAscdata,
