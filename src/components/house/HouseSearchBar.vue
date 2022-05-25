@@ -51,6 +51,10 @@
               <span class="category_bg store"></span>
               편의점
             </li>
+            <li id="SW8" data-order="5">
+              <span class="category_bg store"></span>
+              지하철
+            </li>
           </ul>
         </div>
       </b-col>
@@ -531,8 +535,7 @@ export default {
   height: 28px;
 }
 #category li .category_bg {
-  background: url(https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/places_category.png)
-    no-repeat;
+  background: url(@/assets/placesCategory.jpg) no-repeat;
 }
 #category li .bank {
   background-position: -10px 0;
