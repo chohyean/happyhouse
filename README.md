@@ -1,4 +1,4 @@
-# 🏡 HappyHouse - 부동산 정보 관련 통합 서비스 웹 사이트
+# 🏡 HappyHouse - 부동산 정보 관련 통합 서비스 웹사이트
 
 ![HappyHouse](https://user-images.githubusercontent.com/49545022/203885986-21e92998-4000-40e9-96c8-cd9b60c19fd2.png)
 
